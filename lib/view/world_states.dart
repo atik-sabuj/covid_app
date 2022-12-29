@@ -42,9 +42,35 @@ class _WorldStatesScreenState extends State<WorldStatesScreen> with TickerProvid
                     "Recovered": 15,
                     "Deaths": 5,
               },
+                chartRadius: MediaQuery.of(context).size.width/3.2,
+                legendOptions: const LegendOptions(
+                  legendPosition: LegendPosition.left
+                ),
                 animationDuration: const Duration(microseconds: 1200),
                 chartType: ChartType.ring,
                 colorList: colorList,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .06),
+                child: Card(
+                  child: Column(
+                    children: [
+                      ReusableRow(title: 'Total', value: '200',),
+                      ReusableRow(title: 'Total', value: '200',),
+                      ReusableRow(title: 'Total', value: '200',),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: const Color(0xff1aa260),
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: const Center(
+                  child: Text('Track Countries'),
+                ),
               )
             ],
           ),
@@ -53,3 +79,29 @@ class _WorldStatesScreenState extends State<WorldStatesScreen> with TickerProvid
     );
   }
 }
+
+class ReusableRow extends StatelessWidget {
+  String title,value;
+  ReusableRow({Key? key, required this.title, required this.value}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(title),
+              Text(value),
+            ],
+          ),
+          SizedBox(height: 5,),
+          Divider()
+        ],
+      ),
+    );
+  }
+}
+
