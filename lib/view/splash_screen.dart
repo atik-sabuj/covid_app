@@ -39,7 +39,6 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children:  [
-
             AnimatedBuilder(
                 animation: _controller,
                 child: Container(
