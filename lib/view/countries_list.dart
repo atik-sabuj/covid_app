@@ -105,15 +105,30 @@ class _CountriesListScreenState extends State<CountriesListScreen> {
                         }else if(name.toLowerCase().contains(searchController.text.toLowerCase())){
                           return Column(
                             children: [
-                              ListTile(
-                                title: Text(snapshot.data![index]['country']),
-                                subtitle: Text(snapshot.data![index]['cases'].toString()),
-                                leading: Image(
-                                    height: 50,
-                                    width: 50,
-                                    image: NetworkImage(
-                                        snapshot.data![index]['countryInfo']['flag']
-                                    )),
+                              InkWell(
+                                onTap:(){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  DetailsScreen(
+                                    image: snapshot.data![index]['countryInfo']['flag'],
+                                    name: snapshot.data![index]['country'] ,
+                                    totalCases:  snapshot.data![index]['cases'] ,
+                                    totalRecovered: snapshot.data![index]['recovered'] ,
+                                    totalDeaths: snapshot.data![index]['deaths'],
+                                    active: snapshot.data![index]['active'],
+                                    test: snapshot.data![index]['tests'],
+                                    todayRecovered: snapshot.data![index]['todayRecovered'],
+                                    critical: snapshot.data![index]['critical'] ,
+                                  )));
+                                },
+                                child: ListTile(
+                                  title: Text(snapshot.data![index]['country']),
+                                  subtitle: Text(snapshot.data![index]['cases'].toString()),
+                                  leading: Image(
+                                      height: 50,
+                                      width: 50,
+                                      image: NetworkImage(
+                                          snapshot.data![index]['countryInfo']['flag']
+                                      )),
+                                ),
                               )
                             ],
                           );

@@ -74,7 +74,7 @@ class _WorldStatesScreenState extends State<WorldStatesScreen> with TickerProvid
                         colorList: colorList,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .06),
+                        padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * .067),
                         child: Card(
                           child: Column(
                             children: [
